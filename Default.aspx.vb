@@ -66,4 +66,11 @@ Partial Class _Default
         loanGridView.DataSource = loanAmortTbl
         loanGridView.DataBind()
     End Sub
+
+
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        tbLoanAmt.Focus()
+
+    End Sub
 End Class
