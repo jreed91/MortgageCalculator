@@ -41,11 +41,14 @@ Partial Class _Default
 
 
         loanAmortTbl.Columns.Add("Payment Number", System.Type.GetType("System.String"))
+        loanAmortTbl.Columns.Add("Payment Date", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Principal Paid", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("Interest Paid", System.Type.GetType("System.String"))
         loanAmortTbl.Columns.Add("New Balance", System.Type.GetType("System.String"))
 
+
         Dim counterStart As Integer
+        Dim pmtDate As DateTime
 
         For counterStart = 1 To loanTerm
 
@@ -53,9 +56,12 @@ Partial Class _Default
             principal = monthlyPayment - interestPaid
             nBalance = loanAmount - principal
             loanAmount = nBalance
+            pmtDate = DateTime.Now.ToShortDateString
+            pmtDate = pmtDate.AddMonths(counterStart)
 
             tRow = loanAmortTbl.NewRow()
             tRow("Payment Number") = String.Format(counterStart)
+            tRow("Payment Date") = String.Format(pmtDate)
             tRow("Principal Paid") = String.Format("{0:C}", principal)
             tRow("Interest Paid") = String.Format("{0:C}", interestPaid)
             tRow("New Balance") = String.Format("{0:C}", nBalance)
