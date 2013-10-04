@@ -26,8 +26,13 @@
         <asp:Button ID="btnCalcPmt" runat="server" Text="Calculate" />
         <br /><br />
 
+        <% If Not IsPostBack Then%>
+            <p> Welcome to my mortgage calculator. Please complete the fields above to have your monthly payment and loan calculated for you. </p>
+        <% Else%>
+
         Monthly Payment: <asp:Label ID="lblMonthlyPmt" runat="server"></asp:Label>
 
+        <% End If%>
         <br /><br />
         <asp:GridView ID="loanGridView" runat="server"></asp:GridView>
     </div>
